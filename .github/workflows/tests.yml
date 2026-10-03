@@ -59,6 +59,7 @@ jobs:
           echo "$PWD/apache-jmeter-5.6.3/bin" >> "$GITHUB_PATH"
       - name: Run load test
         run: |
+          mkdir -p jmeter/results
           jmeter -n -t jmeter/restful-booker-load-test.jmx -Jusers=3 -Jrampup=5 -Jloops=2 \
                  -l jmeter/results/results.jtl -e -o jmeter/results/report
       - uses: actions/upload-artifact@v4
